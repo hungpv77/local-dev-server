@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule    ^$    webroot/    [L]
+    RewriteRule    (.*) webroot/$1    [L]
+</IfModule>
+
+# The name of the database for WordPress
+SetEnv ENV_SHOP_DB_NAME ssoblog
+# The name of core database
+SetEnv ENV_CORE_DB_NAME ebdb
+# MySQL database username
+SetEnv ENV_DB_USER root
+# MySQL database password
+SetEnv ENV_DB_PASSWORD vVDMGFJFQtaDxHWLhA96BFW4
+# MySQL hostname
+SetEnv ENV_DB_HOST 127.0.0.1
+# MySQL port
+SetEnv ENV_DB_PORT 3306
+# API Url
+SetEnv ENV_RECURLY_JS_PUBLIC_KEY sjc-q5BicwbopjVntY6DWMqPqC
+SetEnv ENV_SEGMENT_KEY yefXQJ8pKHTF2c9B43VaHV3rD7Bu5PrW
