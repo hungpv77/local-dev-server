@@ -81,7 +81,8 @@ install_recurly(){
     echo "git clone -b $2 ${repository_url}"
     cd "$server_dir/app"       
     git clone -b $2 ${repository_url} "."       
-           
+    
+    chmod 777 -R ${www_dir}$1       
         
     echo "INFO: Creating database.php for Recurly app"          
     recurly_database_config="$server_dir/app/Config/database.php"    
@@ -91,10 +92,9 @@ install_recurly(){
         echo "ERROR: recurly-config.php is not exist."    
     fi
 
-
     echo "INFO: Creating .htaccess file for Recurly app"
     if [ -f "$script_dir/config/recurly-htaccess" ]; then
-        cp "$script_dir/config/recurly-htaccess" "$server_dir/.htaccess"
+        cp "$script_dir/config/recurly-htaccess" "$server_dir/app/.htaccess"
     else
         echo "ERROR: recurly-htaccess is not exist."  
     fi
