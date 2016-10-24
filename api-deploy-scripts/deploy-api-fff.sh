@@ -7,9 +7,9 @@ apache_vhost_dir="/etc/apache2/sites-available/"
 script_dir=${PWD}
 www_dir="/var/www/html/"
 reponame="api"
-rsa_file="/root/.ssh/github_rsa"
+rsa_file="/root/.ssh/github_fff"
 
-repository_url="git@github.com:hungpv77/api.git"
+repository_url="git@github.com:fabfitfun/api.git"
 dev_server_ip="24.199.35.190"
 domain="fffdev.com"
 hosted_zone_id="Z1986QIYBBYSUJ"
