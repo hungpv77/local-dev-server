@@ -5,19 +5,12 @@ apache_vhost_dir="/etc/apache2/sites-available/"
 
 # Get the path of directory that contains executing script
 script_dir=${PWD}
-www_dir="/var/www/html/"
+
+# Read server info
+source ../servers-info
+
 reponame="shop"
-rsa_file="/root/.ssh/github_rsa"
-
 repository_url="git@github.com:hungpv77/shop-fabfitfun.git"
-dev_server_ip="24.199.35.190"
-domain="fffdev.com"
-hosted_zone_id="Z1986QIYBBYSUJ"
-shop_db="ssoblog"
-core_db="ebdb"
-db_passwd="vVDMGFJFQtaDxHWLhA96BFW4"
-db_path="/usr/local/provision-sql"
-
 
 main(){
     # Check if user is root

@@ -1,0 +1,23 @@
+#The directory that contains deploying sites
+www_dir="/var/www/html/"
+
+#The private keys for fabfitfun githug
+rsa_file="/root/.ssh/github_rsa"
+
+#The dev server public ip
+dev_server_ip="24.199.35.190"
+
+#The parent domain
+domain="fffdev.com"
+
+#The hosted zone id
+hosted_zone_id="Z1986QIYBBYSUJ"
+
+shop_db="ssoblog"
+core_db="ebdb"
+
+#The db password
+db_passwd="vVDMGFJFQtaDxHWLhA96BFW4"
+
+#The path the contains the a bare skeleton db that need to import for each branch
+db_path="/usr/local/provision-sql"
