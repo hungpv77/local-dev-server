@@ -142,7 +142,7 @@ add_ssl_virtual_hosts() {
     echo "INFO: replace server dir variable in $apache_vhost_ssl_file"
     sed -i "s@---ServerDir---@$server_dir@" $apache_vhost_ssl_file    
 
-    a2ensite "${branch_name}.${reponame}-ssl.conf"
+    a2ensite "$1.${reponame}-ssl.conf"
     service apache2 reload
     service apache2 restart
 }
