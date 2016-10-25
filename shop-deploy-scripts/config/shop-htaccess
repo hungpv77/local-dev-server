@@ -1,6 +1,6 @@
 # Set environment variables
 # Redis server
-SetEnv ENV_WP_REDIS_HOST 127.0.0.1:6379
+# SetEnv ENV_WP_REDIS_HOST 127.0.0.1:6379
 # The name of the database for WordPress
 SetEnv ENV_SHOP_DB_NAME ssoblog
 # The name of core database
