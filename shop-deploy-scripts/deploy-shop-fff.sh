@@ -223,7 +223,24 @@ config_url_data() {
 
     # Update wp_options table for siteurl and home
     echo "UPDATE $1.wp_options SET option_value='https://$2/magazine' WHERE option_name='siteurl'" | mysql -u root --password=${db_passwd}
-    echo "UPDATE $1.wp_options SET option_value='https://$2/magazine' WHERE option_name='home'" | mysql -u root --password=${db_passwd}         
+    echo "UPDATE $1.wp_options SET option_value='https://$2/magazine' WHERE option_name='home'" | mysql -u root --password=${db_passwd} 
+
+    # Update menu items
+    echo "UPDATE $1.shop_postmeta pm INNER JOIN $1.shop_posts p ON pm.post_id=p.id
+        SET pm.meta_value=REPLACE(pm.meta_value, 'http://www.fabfitfun.com', '')
+        WHERE p.post_type='nav_menu_item' AND pm.meta_key='_menu_item_url' AND (INSTR(pm.meta_value, 'http://www.fabfitfun.com') > 0)" | mysql -u root --password=${db_passwd}
+
+    echo "UPDATE $1.shop_postmeta pm INNER JOIN $1.shop_posts p ON pm.post_id=p.id
+        SET pm.meta_value=REPLACE(pm.meta_value, 'https://www.fabfitfun.com', '')
+        WHERE p.post_type='nav_menu_item' AND pm.meta_key='_menu_item_url' AND (INSTR(pm.meta_value, 'https://www.fabfitfun.com') > 0)" | mysql -u root --password=${db_passwd}
+
+    echo "UPDATE $1.shop_postmeta pm INNER JOIN $1.shop_posts p ON pm.post_id=p.id
+        SET pm.meta_value=REPLACE(pm.meta_value, 'http://fabfitfun.com', '')
+        WHERE p.post_type='nav_menu_item' AND pm.meta_key='_menu_item_url' AND (INSTR(pm.meta_value, 'http://fabfitfun.com') > 0)" | mysql -u root --password=${db_passwd}
+
+    echo "UPDATE $1.shop_postmeta pm INNER JOIN $1.shop_posts p ON pm.post_id=p.id
+        SET pm.meta_value=REPLACE(pm.meta_value, 'https://fabfitfun.com', '')
+        WHERE p.post_type='nav_menu_item' AND pm.meta_key='_menu_item_url' AND (INSTR(pm.meta_value, 'https://fabfitfun.com') > 0)" | mysql -u root --password=${db_passwd}        
 }
 
 update_data(){
