@@ -79,8 +79,8 @@ install_blog(){
     echo "INFO: update /blog/web/wp-content/themes/braxton/header.php file"
     sed -i "s/www.fabfitfun.com/dev.shop.fffdev.com/" ${header_file} 
 
-    sed -i "s@Alias /magazine.*@Alias /magazine $server_dir@" ${shop_vhost_file}
-    sed -i "s@Alias /magazine.*@Alias /magazine $server_dir@" ${shop_ssl_vhost_file}
+    sed -i "s@Alias /magazine.*@Alias /magazine $server_dir/web@" ${shop_vhost_file}
+    sed -i "s@Alias /magazine.*@Alias /magazine $server_dir/web@" ${shop_ssl_vhost_file}
 
     service apache2 reload
     service apache2 restart   

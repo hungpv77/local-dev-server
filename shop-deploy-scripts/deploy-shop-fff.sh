@@ -222,6 +222,8 @@ config_url_data() {
     echo "UPDATE $1.shop_options SET option_value='https://$2' WHERE option_name='home'" | mysql -u root --password=${db_passwd}
 
     # Update wp_options table for siteurl and home
+    echo "UPDATE $1.shop_postmeta SET meta_value='https://$2' WHERE post_id=116 AND meta_key='_menu_item_url'" | mysql -u root --password=${db_passwd}
+
     echo "UPDATE $1.wp_options SET option_value='https://$2/magazine' WHERE option_name='siteurl'" | mysql -u root --password=${db_passwd}
     echo "UPDATE $1.wp_options SET option_value='https://$2/magazine' WHERE option_name='home'" | mysql -u root --password=${db_passwd} 
 
