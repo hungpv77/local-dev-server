@@ -1,3 +1,14 @@
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+
 # Set environment variables
 # Redis server
 # SetEnv ENV_WP_REDIS_HOST 127.0.0.1:6379
@@ -20,15 +31,6 @@ setEnv ENV_COOKIE_DOMAIN .fffdev.com
 SetEnv ENV_API_URL http://dev.api.fffdev.com
 SetEnv ENV_RECURLY_JS_PUBLIC_KEY sjc-q5BicwbopjVntY6DWMqPqC
 SetEnv ENV_SEGMENT_KEY yefXQJ8pKHTF2c9B43VaHV3rD7Bu5PrW
+SetEnv ENV_POPUPMAKER_INVITE_FRIEND popmake-120002
 
-# BEGIN WordPress
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
-</IfModule>
-
-# END WordPress
+SetEnv ENV_PRODUCTION_MODE 0

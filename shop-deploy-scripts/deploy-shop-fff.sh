@@ -10,7 +10,7 @@ script_dir=${PWD}
 source ../servers-info
 
 reponame="shop"
-repository_url="git@github.com:hungpv77/shop-fabfitfun.git"
+repository_url="git@github.com:fabfitfun/shop-fabfitfun.git"
 
 main(){
     # Check if user is root

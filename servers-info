@@ -2,7 +2,7 @@
 www_dir="/var/www/html/"
 
 #The private keys for fabfitfun githug
-rsa_file="/root/.ssh/github_rsa"
+rsa_file="/root/.ssh/github_fff"
 
 #The dev server public ip
 dev_server_ip="24.199.35.190"

@@ -10,7 +10,7 @@ script_dir=${PWD}
 source ../servers-info
 
 reponame="blog"
-repository_url="git@github.com:hungpv77/core-blog.git"
+repository_url="git@github.com:fabfitfun/core-blog.git"
 
 shop_vhost_file="/etc/apache2/sites-available/dev.shop.conf"
 shop_ssl_vhost_file="/etc/apache2/sites-available/dev.shop-ssl.conf"
@@ -60,8 +60,8 @@ install_blog(){
     git clone -b $2 ${repository_url} "$server_dir/"
 
     # Copy wp-config from predefined to Blog app
-    echo "INFO: Creating wp-config.php for Blog app"         
-    wp_config_file="$server_dir/web/wp-config.php"
+    echo "INFO: Creating config.local.php for Blog app"         
+    wp_config_file="$server_dir/web/config.local.php"
     if [ -f "$script_dir/config/blog-config.php" ]; then
         cp "$script_dir/config/blog-config.php" $wp_config_file
     else

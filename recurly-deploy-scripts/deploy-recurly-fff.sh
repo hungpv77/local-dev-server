@@ -10,7 +10,7 @@ script_dir=${PWD}
 source ../servers-info
 
 reponame="recurly"
-repository_url="git@github.com:hungpv77/recurly-push-notification.git"
+repository_url="git@github.com:fabfitfun/recurly-push-notification.git"
 
 
 main(){

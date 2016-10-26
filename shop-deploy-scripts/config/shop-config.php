@@ -1,7 +1,7 @@
 <?php
 /** Enable W3 Total Cache Edge Mode */
 define('W3TC_EDGE_MODE', true); // Added by W3 Total Cache
-//define('WP_REDIS_HOST', getenv('ENV_WP_REDIS_HOST'));
+#define('WP_REDIS_HOST', 'dev-home-cache.qvoufz.ng.0001.use1.cache.amazonaws.com');
 
 /**
  * The base configurations of the WordPress.
@@ -52,14 +52,14 @@ Modified Files on www.fabfitfun.com:
 - Uses table predix wp_
 */
 
-$baseurl = getenv('ENV_BASE_URL');
+$baseurl = 'https://dev-home.fabfitfun.com';
 $cookiehash = md5($baseurl);
 define('COOKIEHASH', $cookiehash);
 define ('AUTH_COOKIE', 'wordpress_'.COOKIEHASH);
 define ('SECURE_AUTH_COOKIE', 'wordpress_sec_'.COOKIEHASH);
 define ('LOGGED_IN_COOKIE','wordpress_logged_in_'.COOKIEHASH);
 define ('TEST_COOKIE', 'wordpress_test_cookie');
-define('COOKIE_DOMAIN', getenv('ENV_COOKIE_DOMAIN'));
+define('COOKIE_DOMAIN', '.fabfitfun.com');
 define('COOKIEPATH', '/');
 
 // The followin is the same as the base blog install
@@ -130,7 +130,7 @@ if ( !defined('ABSPATH') )
 require_once(ABSPATH . 'wp-settings.php');
 
 /* FFF API */
-define('FFF_API_URL', getenv('ENV_API_URL'));
+define('FFF_API_URL', 'http://dev-api.fabfitfun.com');
 define('FFF_API_TOKEN', 'WcNKg2TVBEt9URAx33AvCBUw9xzZVLgv');
 define('FFF_API_HTTP_AUTH_USER', 'dev');
 define('FFF_API_HTTP_AUTH_PASSWORD', 'fabfitfun2015');
@@ -167,3 +167,11 @@ define('FRIEND_BILLING_ZERO_DAY_MINS', 15);
 define('FRIEND_EXPIRED_ZERO_DAY_MINS', 10);
 
 define('WELCOME_RENEWAL_DAYS', 21);
+
+define('RECURLY_JS_KEY', getenv('ENV_RECURLY_JS_PUBLIC_KEY'));
+
+define('SEGMENT_API_KEY', getenv('ENV_SEGMENT_KEY'));
+
+define('MC_FRIEND_TEMPLATE_SLUG', 'new-sgtf-get-your-gift');
+
+define('POPUPMAKER_INVITE_FRIEND', getenv('ENV_POPUPMAKER_INVITE_FRIEND'));
