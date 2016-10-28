@@ -93,15 +93,7 @@ install_blog(){
     sed -i "s@/magazine/category/get-well@/category/get-well@" ${header_file}
     sed -i "s@/magazine/category/entertainment@/category/entertainment@" ${header_file}
     sed -i "s@/magazine/category/get-gorgeous@/category/get-gorgeous@" ${header_file}
-    sed -i "s@/magazine/category/get-stylish@/category/get-stylish@" ${header_file} 
-
-    
-
-    sed -i "s@Alias /magazine.*@Alias /magazine $server_dir/web@" ${shop_vhost_file}
-    sed -i "s@Alias /magazine.*@Alias /magazine $server_dir/web@" ${shop_ssl_vhost_file}
-
-    service apache2 reload
-    service apache2 restart   
+    sed -i "s@/magazine/category/get-stylish@/category/get-stylish@" ${header_file}     
  
 }
 
@@ -120,7 +112,7 @@ add_virtual_hosts() {
     fi
     echo "INFO: replace server name variable in $apache_vhost_file" 
     sed -i "s@---ServerName---@$server_name@" ${apache_vhost_file}
-    sed -i "s@---ServerDir---@$server_dir@" ${apache_vhost_file}
+    sed -i "s@---ServerDir---@$server_dir/web@" ${apache_vhost_file}
     
     a2ensite "$1.${reponame}.conf"
     service apache2 reload
@@ -150,7 +142,7 @@ add_ssl_virtual_hosts() {
     echo "INFO: replace server name variable in $apache_vhost_ssl_file" 
     sed -i "s@---ServerName---@$server_name@" $apache_vhost_ssl_file
     echo "INFO: replace server dir variable in $apache_vhost_ssl_file"
-    sed -i "s@---ServerDir---@$server_dir@" $apache_vhost_ssl_file    
+    sed -i "s@---ServerDir---@$server_dir/web@" $apache_vhost_ssl_file    
 
     a2ensite "$1.${reponame}-ssl.conf"
     service apache2 reload
