@@ -1,0 +1,16 @@
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /magazine/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /magazine/index.php [L]
+</IfModule>
+
+# END WordPress
+
+#set max upload file size
+php_value upload_max_filesize 90M
+#set max post size
+php_value post_max_size 90M
