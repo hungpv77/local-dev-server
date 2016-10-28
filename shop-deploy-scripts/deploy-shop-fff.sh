@@ -188,13 +188,13 @@ create_databases() {
 
 import_data() {
      if [ -d "$db_path/$2" ]; then
-        echo "-------------------------------------"
-        echo "INFO: Importing schema for $1..."        
-        for sql_file in $db_path/${2}/*schema*.sql
-        do            
-            time mysql -u root --password=${db_passwd} -f $1 < $sql_file            
-            echo ""
-        done
+        #echo "-------------------------------------"
+        #echo "INFO: Importing schema for $1..."        
+        #for sql_file in $db_path/${2}/*schema*.sql
+        #do            
+        #    time mysql -u root --password=${db_passwd} -f $1 < $sql_file            
+        #    echo ""
+        #done
 
         echo "-------------------------------------"
         echo "INFO: Importing data for $1..."                
