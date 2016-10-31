@@ -21,6 +21,7 @@ main(){
     fi
 
     git_branch=$( get_branch_name )
+    echo "INFO: trigger branch: $git_branch"
     
     # replace / by _
     dir_branch=$(echo $git_branch | sed 's@/@_@g')
