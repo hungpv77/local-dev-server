@@ -52,14 +52,14 @@ Modified Files on www.fabfitfun.com:
 - Uses table predix wp_
 */
 
-$baseurl = 'https://dev-home.fabfitfun.com';
+$baseurl = getenv('ENV_BASE_URL');
 $cookiehash = md5($baseurl);
 define('COOKIEHASH', $cookiehash);
 define ('AUTH_COOKIE', 'wordpress_'.COOKIEHASH);
 define ('SECURE_AUTH_COOKIE', 'wordpress_sec_'.COOKIEHASH);
 define ('LOGGED_IN_COOKIE','wordpress_logged_in_'.COOKIEHASH);
 define ('TEST_COOKIE', 'wordpress_test_cookie');
-define('COOKIE_DOMAIN', '.fabfitfun.com');
+define('COOKIE_DOMAIN', '.fffdev.com');
 define('COOKIEPATH', '/');
 
 // The followin is the same as the base blog install
