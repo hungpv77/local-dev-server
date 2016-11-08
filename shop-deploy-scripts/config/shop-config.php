@@ -1,7 +1,7 @@
 <?php
 /** Enable W3 Total Cache Edge Mode */
 define('W3TC_EDGE_MODE', true); // Added by W3 Total Cache
-#define('WP_REDIS_HOST', 'dev-home-cache.qvoufz.ng.0001.use1.cache.amazonaws.com');
+// define('WP_REDIS_HOST', 'dev-home-cache.qvoufz.ng.0001.use1.cache.amazonaws.com');
 
 /**
  * The base configurations of the WordPress.
