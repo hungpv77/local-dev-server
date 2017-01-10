@@ -5,7 +5,7 @@ www_dir="/var/www/html/"
 rsa_file="/root/.ssh/github_fff"
 
 #The dev server public ip
-dev_server_ip="24.199.35.190"
+dev_server_ip="76.80.27.12"
 
 #The parent domain
 domain="fffdev.com"
