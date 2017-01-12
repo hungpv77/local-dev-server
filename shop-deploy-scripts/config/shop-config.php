@@ -130,7 +130,7 @@ if ( !defined('ABSPATH') )
 require_once(ABSPATH . 'wp-settings.php');
 
 /* FFF API */
-define('FFF_API_URL', 'http://dev-api.fabfitfun.com');
+define('FFF_API_URL', getenv('ENV_API_URL'));
 define('FFF_API_TOKEN', 'WcNKg2TVBEt9URAx33AvCBUw9xzZVLgv');
 define('FFF_API_HTTP_AUTH_USER', 'dev');
 define('FFF_API_HTTP_AUTH_PASSWORD', 'fabfitfun2015');
