@@ -216,7 +216,7 @@ import_data() {
 config_url_data() {
     echo "INFO: Updating database for $1"
 	
-	echo "UPDATE $1.shop_options SET option_value='Oxygen - Child Theme' WHERE option_name='current_theme'" | mysql -u root --password=${db_passwd}
+    # echo "UPDATE $1.shop_options SET option_value='Oxygen - Child Theme' WHERE option_name='current_theme'" | mysql -u root --password=${db_passwd}
         
     echo "UPDATE $1.shop_options SET option_value='$2' WHERE option_name='rootcookie_subdomain_manual'" | mysql -u root --password=${db_passwd}
 
