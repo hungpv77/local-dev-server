@@ -25,6 +25,8 @@ main(){
     fi
 
     git_branch=$( get_branch_name )
+    # Convert upper case to lower case	
+    git_branch=$(echo "$git_branch" | tr '[:upper:]' '[:lower:]')
     echo "INFO: trigger branch: $git_branch"
     
     # replace / by _
