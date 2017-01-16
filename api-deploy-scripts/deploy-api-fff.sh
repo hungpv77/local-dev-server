@@ -25,7 +25,7 @@ main(){
     fi
 
     if [ "$opt" == "-b" ] || [ "$opt" == "--branch" ]; then
-        git_branch=$2
+        git_branch=$branch_param
     else
         git_branch=$( get_branch_name )
     fi
