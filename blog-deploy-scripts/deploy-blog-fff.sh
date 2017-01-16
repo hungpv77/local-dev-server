@@ -24,7 +24,12 @@ main(){
         exit 1;    
     fi
 
-    git_branch=$( get_branch_name )
+    if [ "$1" == "-b" ] || [ "$1" == "--branch" ]; then
+        git_branch=$2
+    else
+        git_branch=$( get_branch_name )
+    fi
+
     # Convert upper case to lower case	
     git_branch_lower=$(echo "$git_branch" | tr '[:upper:]' '[:lower:]')
     echo "INFO: trigger branch: $git_branch"
