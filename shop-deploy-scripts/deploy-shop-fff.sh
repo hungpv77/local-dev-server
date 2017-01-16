@@ -12,31 +12,39 @@ source ../servers-info
 reponame="shop"
 repository_url="git@github.com:fabfitfun/shop-fabfitfun.git"
 
+opt=$1
+branch_param=$2
+
 main(){
     # Check if user is root
     if [ $(id -u) != "0" ]
     then
         echo "ERROR: You must be root to run this script, use sudo sh $0";
-        exit 1;    
+        exit 1;
     fi
 
-    if [ "$1" == "-b" ] || [ "$1" == "--branch" ]; then
-        git_branch=$2
+    if [ "$opt" == "-b" ] || [ "$opt" == "--branch" ]; then
+        git_branch=$branch_param
     else
         git_branch=$( get_branch_name )
     fi
 
+
     # Convert upper case to lower case
     git_branch_lower=$(echo "$git_branch" | tr '[:upper:]' '[:lower:]')
-    echo "INFO: trigger branch: $git_branch"
+    echo "INFO: trigger branch: $git_branch_lower"
+    
     
     # replace / by _
     dir_branch=$(echo $git_branch_lower | sed 's@/@_@g')
     # replace - by _
-    dir_branch=$(echo $dir_branch_lower | sed 's@-@_@g')
+    dir_branch=$(echo $dir_branch | sed 's@-@_@g')
+
 
     shop_db_name="${dir_branch}_${shop_db}"
     core_db_name="${dir_branch}_${core_db}"
+
+    echo "DEBUG: shop db name = $shop_db_name"
 
     server_dir="${www_dir}${dir_branch}.${reponame}"
 
@@ -61,7 +69,7 @@ main(){
         config_url_data ${shop_db_name} ${domain_name}
         update_data ${server_dir} ${shop_db_name}
         call_route53_api ${domain_name}
-    fi        
+    fi
 }
 
 
