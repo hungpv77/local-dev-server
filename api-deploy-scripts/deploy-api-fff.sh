@@ -12,6 +12,10 @@ source ../servers-info
 reponame="api"
 repository_url="git@github.com:fabfitfun/api.git"
 
+#Get parameter from command line
+opt=$1
+branch_param=$2
+
 main(){
     # Check if user is root
     if [ $(id -u) != "0" ]
@@ -20,7 +24,7 @@ main(){
         exit 1;    
     fi
 
-    if [ "$1" == "-b" ] || [ "$1" == "--branch" ]; then
+    if [ "$opt" == "-b" ] || [ "$opt" == "--branch" ]; then
         git_branch=$2
     else
         git_branch=$( get_branch_name )
@@ -33,7 +37,7 @@ main(){
     # replace / by _
     dir_branch=$(echo $git_branch_lower | sed 's@/@_@g')
     # replace - by _
-    dir_branch=$(echo $dir_branch_lower | sed 's@-@_@g')
+    dir_branch=$(echo $dir_branch | sed 's@-@_@g')
 
     server_dir="${www_dir}${dir_branch}.${reponame}"
 

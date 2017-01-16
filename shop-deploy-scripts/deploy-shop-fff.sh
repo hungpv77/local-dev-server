@@ -12,6 +12,8 @@ source ../servers-info
 reponame="shop"
 repository_url="git@github.com:fabfitfun/shop-fabfitfun.git"
 
+#Get parameter from command line
+#Ex: ./deploy-shop-fff.sh -b <git_branch_name> 
 opt=$1
 branch_param=$2
 

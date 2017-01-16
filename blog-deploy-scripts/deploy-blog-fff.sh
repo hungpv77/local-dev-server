@@ -15,6 +15,11 @@ repository_url="git@github.com:fabfitfun/core-blog.git"
 shop_vhost_file="/etc/apache2/sites-available/dev.shop.conf"
 shop_ssl_vhost_file="/etc/apache2/sites-available/dev.shop-ssl.conf"
 
+#Get parameter from command line
+#Ex: ./deploy-shop-fff.sh -b <git_branch_name> 
+opt=$1
+branch_param=$2
+
 
 main(){
     # Check if user is root
@@ -24,8 +29,8 @@ main(){
         exit 1;    
     fi
 
-    if [ "$1" == "-b" ] || [ "$1" == "--branch" ]; then
-        git_branch=$2
+    if [ "$opt" == "-b" ] || [ "$opt" == "--branch" ]; then
+        git_branch=$branch_param
     else
         git_branch=$( get_branch_name )
     fi
@@ -37,7 +42,7 @@ main(){
     # replace / by _
     dir_branch=$(echo $git_branch_lower | sed 's@/@_@g')
     # replace - by _
-    dir_branch=$(echo $dir_branch_lower | sed 's@-@_@g')
+    dir_branch=$(echo $dir_branch | sed 's@-@_@g')
 
     server_dir="${www_dir}${dir_branch}.${reponame}"
 
