@@ -35,7 +35,7 @@ main(){
     echo "INFO: trigger branch: $git_branch"
     
     # replace / by _
-    dir_branch=$(echo $git_branch | sed 's@/@_@g')
+    dir_branch=$(echo $git_branch_lower | sed 's@/@_@g')
     # replace - by _
     dir_branch=$(echo $dir_branch | sed 's@-@_@g')
 
