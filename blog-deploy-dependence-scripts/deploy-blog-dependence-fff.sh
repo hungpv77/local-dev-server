@@ -23,8 +23,15 @@ main(){
         echo "ERROR: You must be root to run this script, use sudo sh $0";
         exit 1;    
     fi
+	
+	if [ "$opt" == "-b" ] || [ "$opt" == "--branch" ]; then
+        git_branch=$branch_param
+    else
+        git_branch=$( get_branch_name )
+    fi
 
-    git_branch=$( get_branch_name )
+	# Convert upper case to lower case	
+    git_branch_lower=$(echo "$git_branch" | tr '[:upper:]' '[:lower:]')
     echo "INFO: trigger branch: $git_branch"
     
     # replace / by _
