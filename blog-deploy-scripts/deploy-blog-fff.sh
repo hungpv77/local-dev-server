@@ -74,7 +74,7 @@ install_blog(){
 
     # Copy wp-config from predefined to Blog app
     echo "INFO: Creating config.local.php for Blog app"         
-    wp_config_file="$server_dir/web/config.local.php"
+    wp_config_file="$server_dir/web/wp-config.php"
     if [ -f "$script_dir/config/blog-config.php" ]; then
         cp "$script_dir/config/blog-config.php" $wp_config_file
     else
