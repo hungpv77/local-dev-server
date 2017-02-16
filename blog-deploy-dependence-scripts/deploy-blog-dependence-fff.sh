@@ -93,6 +93,9 @@ install_blog(){
     else
         echo "ERROR: wp-config.php is not exist."        
     fi	
+	
+	sed -i "s@dev-home.fabfitfun.com@$4@" ${wp_config_file}
+	
 
 
     echo "INFO: Creating .htaccess file for Blog app"
