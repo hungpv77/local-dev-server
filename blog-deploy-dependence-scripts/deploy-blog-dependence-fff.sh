@@ -77,14 +77,22 @@ install_blog(){
 
     # Copy wp-config from predefined to Blog app
     echo "INFO: Creating config.local.php for Blog app"         
-    wp_config_file="$server_dir/web/wp-config.php"
-    if [ -f "$script_dir/config/blog-config.php" ]; then
-        cp "$script_dir/config/blog-config.php" $wp_config_file
+    config_local_file="$server_dir/web/config.local.php"
+    if [ -f "$script_dir/config/config.local.php" ]; then
+        cp "$script_dir/config/config.local.php" $config_local_file
     else
         echo "ERROR: blog-config.php is not exist."        
     fi
 
-    sed -i "s@dev_ssoblog@$3@" ${wp_config_file}    
+    sed -i "s@dev_ssoblog@$3@" ${config_local_file}
+
+	echo "INFO: Creating wp-config.php for Blog app"         
+    wp_config_file="$server_dir/web/wp-config.php"
+    if [ -f "$script_dir/config/wp-config.php" ]; then
+        cp "$script_dir/config/wp-config.php" $wp_config_file
+    else
+        echo "ERROR: wp-config.php is not exist."        
+    fi	
 
 
     echo "INFO: Creating .htaccess file for Blog app"
