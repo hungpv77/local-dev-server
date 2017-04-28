@@ -6,7 +6,7 @@ domain="fffdev.com"
 hosted_zone_id="Z1986QIYBBYSUJ"
 
 www_dir="/var/www/html/"
-jenkins_workspace="/var/lib/jenkins/workspace/test/"
+jenkins_workspace="/var/lib/jenkins/workspace/Clean-Shop/"
 sites_available="/etc/apache2/sites-available/"
 sites_enabled="/etc/apache2/sites-enabled/"
 reponame="shop"

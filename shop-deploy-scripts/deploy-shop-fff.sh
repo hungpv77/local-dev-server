@@ -284,5 +284,5 @@ get_branch_name(){
     echo "$branch_name"
 }
 
-#main
+main
 exit 0
