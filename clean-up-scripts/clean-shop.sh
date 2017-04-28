@@ -11,7 +11,7 @@ apache_vhost_dir="/etc/apache2/sites-available/"
 reponame="shop"
 shop_db="ssoblog"
 core_db="ebdb"
-
+db_passwd="vVDMGFJFQtaDxHWLhA96BFW4"
 
 
 #Get parameter from command line
