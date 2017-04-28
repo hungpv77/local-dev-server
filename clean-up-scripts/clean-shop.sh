@@ -7,7 +7,8 @@ hosted_zone_id="Z1986QIYBBYSUJ"
 
 www_dir="/var/www/html/"
 jenkins_workspace="/var/lib/jenkins/workspace/test/"
-apache_vhost_dir="/etc/apache2/sites-available/"
+sites_available="/etc/apache2/sites-available/"
+sites_enabled="/etc/apache2/sites-enabled/"
 reponame="shop"
 shop_db="ssoblog"
 core_db="ebdb"
@@ -58,17 +59,21 @@ main(){
 	remove_root_dir ${project_name}
 }
 
-remove_virtual_host(){
-    a2ensite "$1.${reponame}.conf"
-    a2ensite "$1.${reponame}-ssl.conf"
-    apache_vhost_file="${apache_vhost_dir}$1.${reponame}.conf"
-    apache_vhost_ssl_file="${apache_vhost_dir}$1.${reponame}-ssl.conf"
-
-    echo "INFO: Deleting $apache_vhost_file"
-	rm $apache_vhost_file
+remove_virtual_host(){    
+    sites_available_file="${sites_available}$1.${reponame}.conf"
+    sites_available_ssl_file="${sites_available}$1.${reponame}-ssl.conf"
+	sites_enabled_file="${sites_enabled}$1.${reponame}.conf"
+    sites_enabled_ssl_file="${sites_enabled}$1.${reponame}-ssl.conf"
 	
-	echo "INFO: Deleting $apache_vhost_ssl_file"
-	rm $apache_vhost_ssl_file
+
+    echo "INFO: Deleting $sites_available_file"
+	rm $sites_available_file
+	rm $sites_enabled_file
+	
+	echo "INFO: Deleting $sites_available_ssl_file"
+	rm $sites_available_ssl_file
+	rm $sites_enabled_ssl_file
+	
 	service apache2 reload
 }
 
