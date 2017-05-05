@@ -42,7 +42,6 @@ main(){
        exit 1;
     fi
 
-
     # Convert upper case to lower case
     git_branch_lower=$(echo "$git_branch" | tr '[:upper:]' '[:lower:]')
     echo "INFO: trigger branch: $git_branch_lower"
@@ -52,7 +51,6 @@ main(){
     dir_branch=$(echo $git_branch_lower | sed 's@/@_@g')
     # replace - by _
     dir_branch=$(echo $dir_branch | sed 's@-@_@g')
-
 
     shop_db_name="${dir_branch}_${shop_db}"
     core_db_name="${dir_branch}_${core_db}"
