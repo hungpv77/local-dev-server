@@ -31,6 +31,17 @@ main(){
         git_branch=$( get_branch_name )
     fi
 
+    echo "INFO: Adding SSH key to the ssh-agent"
+    eval "$(sudo ssh-agent -s)"
+    ssh-add $rsa_file
+
+    # Check branch is exist, if not exit
+    branch_existed=$(git ls-remote --heads $repository_url $git_branch)
+    if [ ! -n "$branch_existed" ]; then
+       echo "$git_branch does not exist!";
+       exit 1;
+    fi
+
 
     # Convert upper case to lower case
     git_branch_lower=$(echo "$git_branch" | tr '[:upper:]' '[:lower:]')
@@ -52,9 +63,6 @@ main(){
 
     domain_name="${dir_branch}.${reponame}.${domain}"
 
-    echo "INFO: Adding SSH key to the ssh-agent"
-    eval "$(sudo ssh-agent -s)"
-    ssh-add $rsa_file
 
     # If this branch is existing, just pull code
     if [ -d "$server_dir" ]; then
