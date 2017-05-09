@@ -5,8 +5,8 @@ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 echo "Configuring " 
 echo "[default]
-aws_access_key_id = AKIAI6TJJYARA7CPRIXA
-aws_secret_access_key = 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" | tee ~/.aws/credentials
+aws_access_key_id = AKIAI7KBU5P2IFB5VT6A
+aws_secret_access_key = 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" | tee ~/.aws/credentials
 
 echo "[default]
 output = json
