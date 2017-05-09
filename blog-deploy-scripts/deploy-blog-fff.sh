@@ -69,42 +69,7 @@ main(){
 }
 
 
-install_blog(){
-    echo "DEBUG: install_blog()..."
-    server_dir="${www_dir}$1.${reponame}"
-    server_name="$1.${reponame}.${domain}"
-    mkdir -p $server_dir    
-
-    # Clone code from repository        
-    echo "git clone -b $2 ${repository_url}"    
-    git clone -b $2 ${repository_url} "$server_dir/"
-
-    # Copy wp-config from predefined to Blog app
-    echo "INFO: Creating config.local.php for Blog app"         
-    wp_config_file="$server_dir/web/wp-config.php"
-    if [ -f "$script_dir/config/blog-config.php" ]; then
-        cp "$script_dir/config/blog-config.php" $wp_config_file
-    else
-        echo "ERROR: blog-config.php is not exist."        
-    fi
-
-    echo "INFO: Creating .htaccess file for Blog app"
-    if [ -f "$script_dir/config/blog-htaccess" ]; then
-        cp "$script_dir/config/blog-htaccess" "$server_dir/web/.htaccess"
-    else
-        echo "ERROR: api-htaccess is not exist."  
-    fi
-
-    header_file="$server_dir/web/wp-content/themes/braxton/header.php"
-    echo "INFO: update /blog/web/wp-content/themes/braxton/header.php file"
-    sed -i "s/www.fabfitfun.com/dev.shop.fffdev.com/" ${header_file} 
-
-    sed -i "s@Alias /magazine.*@Alias /magazine $server_dir/web@" ${shop_vhost_file}
-    sed -i "s@Alias /magazine.*@Alias /magazine $server_dir/web@" ${shop_ssl_vhost_file}
-
-    service apache2 reload
-    service apache2 restart
-
+install_blog(){   
     echo "DEBUG: install_blog()..."
     server_dir="${www_dir}$1.${reponame}"
     server_name="$1.${reponame}.${domain}"
