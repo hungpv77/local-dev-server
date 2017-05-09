@@ -15,6 +15,11 @@ repository_url="git@github.com:fabfitfun/core-blog.git"
 shop_vhost_file="/etc/apache2/sites-available/dev.shop.conf"
 shop_ssl_vhost_file="/etc/apache2/sites-available/dev.shop-ssl.conf"
 
+#Get parameter from command line
+#Ex: sudo deploy-blog-dependence-fff.sh -b <git_branch_name> 
+opt=$1
+branch_param=$2
+
 
 main(){
     # Check if user is root
@@ -23,14 +28,26 @@ main(){
         echo "ERROR: You must be root to run this script, use sudo sh $0";
         exit 1;    
     fi
-	
-	if [ "$opt" == "-b" ] || [ "$opt" == "--branch" ]; then
+
+    if [ "$opt" == "-b" ] || [ "$opt" == "--branch" ]; then
         git_branch=$branch_param
     else
         git_branch=$( get_branch_name )
     fi
 
-	# Convert upper case to lower case	
+    echo "INFO: Adding SSH key to the ssh-agent"
+    eval "$(sudo ssh-agent -s)"
+    ssh-add $rsa_file
+
+    # Check branch is exist, if not exit
+    branch_existed=$(git ls-remote --heads $repository_url $git_branch)
+    if [ ! -n "$branch_existed" ]; then
+       echo "$git_branch does not exist!";
+       exit 1;
+    fi
+
+
+    # Convert upper case to lower case	
     git_branch_lower=$(echo "$git_branch" | tr '[:upper:]' '[:lower:]')
     echo "INFO: trigger branch: $git_branch"
     
@@ -43,10 +60,6 @@ main(){
 
     server_dir="${www_dir}${dir_branch}.${reponame}"
     domain_name="${dir_branch}.${reponame}.${domain}"
-
-    echo "INFO: Adding SSH key to the ssh-agent"
-    eval "$(sudo ssh-agent -s)"
-    ssh-add $rsa_file
 
     # If this branch is existing, just pull code
     if [ -d "$server_dir" ]; then
