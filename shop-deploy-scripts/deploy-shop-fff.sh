@@ -91,6 +91,9 @@ install_shop(){
     echo "git clone -b $2 ${repository_url}"
     
     git clone -b $2 ${repository_url} "$server_dir/"
+	
+	# Disable Memcach
+	mv $server_dir/wp-content/object-cache.php $server_dir/wp-content/object-cache.php.bk
 
     echo "INFO: Creating wp-config for shop"     
     wp_config_file="$server_dir/wp-config.php"
